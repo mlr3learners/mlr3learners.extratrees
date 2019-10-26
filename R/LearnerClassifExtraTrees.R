@@ -12,7 +12,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees", inherit = Learner
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamInt$new(id = "ntree", default = 500L, lower = 1L, tags = c("train")),
+          ParamInt$new(id = "ntree", default = 500L, lower = 1L, tags = "train"),
           ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
           ParamInt$new(id = "nodesize", default = 1L, lower = 1L, tags = "train"),
           ParamInt$new(id = "numRandomCuts", default = 1L, tags = "train"),
@@ -40,8 +40,8 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees", inherit = Learner
     train_internal = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      x = as.matrix(data[,task$feature_names, with=FALSE])
-      y = data[,task$target_names, with=FALSE][[1]]
+      x = as.matrix(data[, task$feature_names, with = FALSE])
+      y = data[, task$target_names, with = FALSE][[1]]
 
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))

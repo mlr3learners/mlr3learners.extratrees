@@ -40,8 +40,8 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
    train_internal = function(task) {
      pars = self$param_set$get_values(tags = "train")
      data = task$data()
-     x = as.matrix(data[,task$feature_names, with=FALSE])
-     y = data[,task$target_names, with=FALSE][[1]]
+     x = as.matrix(data[, task$feature_names, with = FALSE])
+     y = data[, task$target_names, with = FALSE][[1]]
 
      if ("weights" %in% task$properties) {
        pars = insert_named(pars, list(weights = task$weights$weight))
