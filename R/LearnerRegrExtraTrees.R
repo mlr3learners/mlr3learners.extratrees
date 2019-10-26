@@ -55,7 +55,6 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
 
      p = invoke(predict, self$model, newdata = newdata)
      PredictionRegr$new(task = task, response = p)
-
    }
  )
 )
