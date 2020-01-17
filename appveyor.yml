@@ -1,0 +1,41 @@
+  # tic documentation: https://docs.ropensci.org/tic/dev/
+
+# Download script file from GitHub
+init:
+  ps: |
+    $ErrorActionPreference = "Stop"
+    Invoke-WebRequest http://raw.github.com/krlmlr/r-appveyor/master/scripts/appveyor-tool.ps1 -OutFile "..\appveyor-tool.ps1"
+    Import-Module '..\appveyor-tool.ps1'
+
+install:
+  - ps: Bootstrap
+  - cmd: Rscript -e "writeLines('options(repos = \'https://cloud.r-project.org\')', '~/.Rprofile')"
+  - cmd: Rscript -e "getOption('repos')"
+  - cmd: Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'binary')"
+  - cmd: Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'binary')"
+  - cmd: Rscript -e "options(pkgType = 'binary'); remotes::install_github('ropenscilabs/tic'); print(tic::dsl_load()); tic::prepare_all_stages()"
+
+before_build: Rscript -e "tic::before_install()"
+build_script: Rscript -e "tic::install()"
+after_build: Rscript -e "tic::after_install()"
+before_test: Rscript -e "tic::before_script()"
+test_script: Rscript -e "tic::script()"
+on_success: Rscript -e "try(tic::after_success(), silent = TRUE)"
+on_failure: Rscript -e "tic::after_failure()"
+before_deploy: Rscript -e "tic::before_deploy()"
+deploy_script: Rscript -e "tic::deploy()"
+after_deploy: Rscript -e "tic::after_deploy()"
+on_finish: Rscript -e "tic::after_script()"
+
+# no testing on R-devel because no package binaries are available
+environment:
+  matrix:
+    - R_VERSION: release
+    - R_VERSION: oldrel
+  id_rsa:
+    secure: g3Kfde3Cu+CYLXiu69imcR8K0oAqfut2IbHOmx7w9i+cAhNEAPLrowqub34QD1vw+pn/bQp2ieiaP8XXpq6m+f2BsnSv8L77x2mzFfzvY8335L5+TJCQiXVOJfFBM9goBDCFxhugjz9tKvVNoyiTHZp61ZYLe4sw8GZ5Q00wCWUcNVEdsCWTwORsn4wq1m4GJuSR0T1kvRQ2TIShZeU995v+oJFZSMBVomyFT4rRcz7QcPBAZmM3mkFewQApf/Uf6w9r6xYeoCpr/Scf2YmlHO27iDdDYNqh41se2DApg7Nyl0GvBE+RSc1Sw3N0Erp0VHnKqg9uo6esHpZPNlxYfLVtq+YpaBD1znRpk8eGWv7VxWfxmIzGe/V/yv5f9GzbMCieTmTsXLIkn5j3z1Ntx6WcIjO5ybwP9qwMuc0S/iKJeN4fPn8M/EOgoeCXcouNeq5Z8z705aoHGgAzF6AyO2KGPW/iDaPqOtJtUWr6P2S9WuW+NSbcOZcncWFH0Hf0rkcUShB/8jKAwgzf1a3pFxlR0wXdHEJFA+OXdJHktSjHyigEOaO0Nht+3bIbGwwmou6Ug0QlOjahgl05JB+wFWG7h/YeZcxEV+h4KKZqInXDWIIDDbb/KlrGT/ab+x0Z/EhA7DK9siMgDC/GAKb2ynXhYlpnWQ0/DOttzkA8XGEurb1lHOhhQlSpA7n2lXr+s8vbLrW7mHkSoaw4dqHL6C+dPZsBFQ0DXBFkFYGJZxjIpucKqoluwsS0YLikVHYu5r+owZVS7pAF8yH9dSiwQ+5NdwIVv8ROX49gC5yE5ZkcNpGLvs/DVEnn0kwoDHZnlr4QH+PW6kGXWog6Na7f4+7urGdJlrhH82xRrD3Xo7/vDs5rjkFAjDJ0Oc5NgqHA6H5LhoPi23w2L5Hlknohb19+L9C/Nf1Ql9U/aPuQiAZhdO5UZX3tzLzpBwCwdllWpZF+mSD6Bsz2VtXdwwtx8R4q8zC5cIYtewwJkSS/FEdErMtnmlQJYLMSWYrdloF9hgT3H5Qj/xbjJcbQovFq9MHv8sSusJ7C1rva2TeeYdOnKlW9caV/LAlB0JhMh2wkvvqXTdE1pILCL4fCv6w1yDPtSAVqN7rEs+od6EUuTf3uPspd1zd0Y5XOs1YKWS1m5jfs6xRuVrBL99gtNBWQDq1d5x+iKltl02ieb9Rbd8fijcVoz/OM7H7xXn4jCNM1HRDbP2/PmcIGKLdh1teAYPPV6GGReN4BnTkEUAUdJKGuK0cb0VosCX9Goku6o4FIkhn1S4cRQDTT6GsQ9K+E3VKsVcDKvBXMSfjWpA9M7A5GaaBiLr0YCST6GgovHG93qB+a7zA/t6BBxC/U7jMjHCUJzGqILuMmaNseU/gSHZXK5tVtCxaO6oREZhR2cAPN1gBHWAp1oimScT6Hxh1ErusqEwkdNd7CpmYJ4grW3x8wZAiQ06hTh70v4FVqVtDC//1qeMcbV8D4VRPDa5y0OQs/foPzvZ1dZjLRcWeSp+vyxaTX2KFKgurgmU7h1lHEjkFcpIQ1NeYuYR4YUDv47yf/7Olpn0ZEvWBn1ToT0/xcTzGzi2tuK2BIA6De0g0mHWLeWoOM7KAOxWrAy7Xzp9MrceFR/bxFOT9xamD0u9jPCsmxPgU+e1wsN94NquvoVpNj2dpWUFO+lu5+lo72wsHT6LUNWaTXhlcYny+qyU8xJ5WQnaozogxYJJP40LMEAcT819v/eCvzj8xZhp3nAZwXJoXTnnYcbrWQQzhy9iNcaVdh53QnW4RGAE0F/lIgCX0Y5ySPNAQL25u+Sp4fa/GrLE14ghj7JrpVBifyT2E3/ODkUkV6LdkCczR8T0wZMoG09DhkDTTzmeSZvk2GgCZhzoppmkQZHHOseTGwxdw7MmtqXuD8l+07+yrDpsT2AEL44FFBknKp5d6QqNgG19DJDMyBW8n2qWJPJG+h1dJIbFcDIwt3t7qq3Il8tqBf6hUlB0z12+uRR2fuuIRGiyvh1XJv8FNcMtGnTR1ti/UsjsKVqfCQFMtNh7J+N67/HP2s73YFNn19wTt1B5/p6LaU101wSu6Yxe98xZeogSZetyZy3zTn/zZmOwsre16hEb8/+QKoqF3awXiEt0FoZn1oO8GYcIhFIdQYZRcCWFW9GhkyQEEgSaCnHKJ1UygMWVa+azZcenk4oASywvEev8TCTijk2uA6dYRper5UDt6U/RejYtXONjyuHgWm+MmNZjpbWXvb09JFNCFuVyXfSapkDDm1qFeAX70NaodkGzYQPst1VzhgNs5NnhdnOSUUgwKvetb0P7f+b1fzOQ3Vvnp6pUxGBZ0k2mhPbC0d0aRca7RnplBJSkuHUXaqMtDsSmEefTP2eBIXQy/yX0GTqp9ZhPjs8k9X0TqnBlNVExKVuNYpqVFL5soVRnJbFTszqrrBStzgRgspo5DYKJjTNCENLvFXGjm3Bse90Jz+o7WCLq64yqT8a/6fTa7RHXUnl3VEuJl27xynUGzAw/L9fHv5/TkWPmdCOFsnr3yWandkCt/Wk7mtyC+un+fjHXCrW8EQ9GXL73gnSBlDshqgwuS/nBd3M+X7OC3z/Fea/pGZV+m66JrcXOljY8Qq6Fia7p02JWzOz0zUraUAlMF5iC/7+FHlk9Om4mMW2AeWi6tGOTKxhQTfdJTMHXlki5frTFpcp2BfqYwv/6uDGZHxlvpSOrpMFoLKaJ7WWJMWr+VN7gSWMuyEEGU3xAFsFTC85T/fk1tyZoDlipyHTU+ZpHwJps6SD1nzordq79hZvDT+14h+ERr9VUcuvemY2L8IzfStD/Eye1GADarjdkf08Zp4vWpGS5Eb5zQvjsUl3mSlMEIKLCv2GT+v2dJGvoXSUMjiY10bKtCkASrlclAkmV2kVAvXaLtWI069qIe2zCSeSbY7fBpkMr1iIHdfWAH4k9xzBIR3M8/foHtn0egkGkYXY88StFe1MWibnmMTlvxwTyZZ6VTOx9zFGlYdRYC9rH5nZwH4cT+wp2WZEKFxgDaay/rFzGChbp+8BtN8bmM=
+  USE_RTOOLS: true
+
+matrix:
+  fast_finish: true
+# Custom user code -------------------------------------------------------------

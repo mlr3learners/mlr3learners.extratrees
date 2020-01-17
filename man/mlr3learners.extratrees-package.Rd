@@ -6,7 +6,15 @@
 \alias{mlr3learners.extratrees-package}
 \title{mlr3learners.extratrees: extraTrees learner from extraTrees package for mlr3}
 \description{
-extraTrees learner from extraTrees package for mlr3.
+extraTrees learner from extraTrees package for
+    mlr3.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/mlr3learners/mlr3learners.extratrees}
+}
+
 }
 \author{
 \strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de}
