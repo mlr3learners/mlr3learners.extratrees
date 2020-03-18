@@ -1,6 +1,6 @@
 #' @title Classification ExtraTrees Learner
 #'
-#' @name mlr_learners_classif.extratrees
+#' @name mlr_learners_classif.extraTrees
 #'
 #' @description
 #' A [mlr3::LearnerClassif] for a classification extratree implemented in

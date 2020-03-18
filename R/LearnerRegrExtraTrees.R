@@ -1,6 +1,6 @@
 #' @title Regression ExtraTrees Learner
 #'
-#' @name mlr_learners_regr.extratrees
+#' @name mlr_learners_regr.extraTrees
 #'
 #' @description
 #' A [mlr3::LearnerRegr] for a regression extratree implemented in
@@ -24,7 +24,8 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
           ParamLgl$new(id = "evenCuts", default = FALSE, tags = "train"),
           ParamInt$new(id = "numThreads", default = 1L, lower = 1L,
             tags = "train"),
-          ParamLgl$new(id = "quantile", default = FALSE),
+          ParamLgl$new(id = "quantile", default = FALSE,
+            tags = c("train", "predict")),
           ParamUty$new(id = "subsetSizes", tags = "train"),
           ParamUty$new(id = "subsetGroups", tags = "train"),
           ParamUty$new(id = "tasks", tags = "train"),
