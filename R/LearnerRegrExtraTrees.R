@@ -1,6 +1,6 @@
 #' @title Regression ExtraTrees Learner
 #'
-#' @aliases mlr_learners_regr.extratrees
+#' @name mlr_learners_regr.extratrees
 #'
 #' @description
 #' A [mlr3::LearnerRegr] for a regression extratree implemented in
@@ -43,7 +43,8 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        properties = "weights"
+        properties = "weights",
+        man = "mlr3learners.extratrees::mlr_learners_regr.extraTrees"
       )
     }
   ),

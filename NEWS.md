@@ -1,6 +1,6 @@
 # mlr3learners.extratrees 0.1.0.9000
 
-- Internal changes only.
+- Add param "quantile" for `LearnerRegrExtraTrees`
 
 
 # mlr3learners.extratrees 0.1.0

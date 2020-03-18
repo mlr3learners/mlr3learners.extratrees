@@ -1,6 +1,6 @@
 #' @title Classification ExtraTrees Learner
 #'
-#' @aliases mlr_learners_classif.extratrees
+#' @name mlr_learners_classif.extratrees
 #'
 #' @description
 #' A [mlr3::LearnerClassif] for a classification extratree implemented in
@@ -42,7 +42,8 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "twoclass", "multiclass")
+        properties = c("weights", "twoclass", "multiclass"),
+        man = "mlr3learners.extratrees::mlr_learners_classif.extraTrees"
       )
     }),
 
