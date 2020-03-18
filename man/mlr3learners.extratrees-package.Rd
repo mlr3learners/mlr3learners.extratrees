@@ -7,7 +7,7 @@
 \title{mlr3learners.extratrees: extraTrees learner from extraTrees package for mlr3}
 \description{
 extraTrees learner from extraTrees package for
-    mlr3.
+    'mlr3'.
 }
 \seealso{
 Useful links:

@@ -4,7 +4,9 @@
 \alias{LearnerClassifExtraTrees}
 \alias{mlr_learners_classif.extratrees}
 \title{Classification ExtraTrees Learner}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.}
+\format{
+\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.
+}
 \description{
 A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratree implemented in extraTree::extraTree()] in package \CRANpkg{extraTree}.
 }
@@ -35,6 +37,7 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$new()}\if{html}{\out{</div>}}
@@ -43,6 +46,7 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-train_internal"></a>}}
+\if{latex}{\out{\hypertarget{method-train_internal}{}}}
 \subsection{Method \code{train_internal()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$train_internal(task)}\if{html}{\out{</div>}}
@@ -51,6 +55,7 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-predict_internal"></a>}}
+\if{latex}{\out{\hypertarget{method-predict_internal}{}}}
 \subsection{Method \code{predict_internal()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$predict_internal(task)}\if{html}{\out{</div>}}
@@ -59,6 +64,7 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
