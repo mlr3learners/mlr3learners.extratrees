@@ -1,29 +1,38 @@
 #' @title Classification ExtraTrees Learner
 #'
 #' @aliases mlr_learners_classif.extratrees
-#' @format [R6::R6Class] inheriting from [mlr3::LearnerClassif].
 #'
 #' @description
-#' A [mlr3::LearnerClassif] for a classification extratree implemented in extraTree::extraTree()] in package \CRANpkg{extraTree}.
+#' A [mlr3::LearnerClassif] for a classification extratree implemented in
+#' extraTree::extraTree()] in package \CRANpkg{extraTree}.
 #'
 #' @export
-LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees", inherit = LearnerClassif,
+LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
+  inherit = LearnerClassif,
   public = list(
+
+    #' @description Create a new `LearnerClassifExtraTrees` object.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamInt$new(id = "ntree", default = 500L, lower = 1L, tags = "train"),
+          ParamInt$new(id = "ntree", default = 500L, lower = 1L,
+            tags = "train"),
           ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-          ParamInt$new(id = "nodesize", default = 1L, lower = 1L, tags = "train"),
+          ParamInt$new(id = "nodesize", default = 1L, lower = 1L,
+            tags = "train"),
           ParamInt$new(id = "numRandomCuts", default = 1L, tags = "train"),
           ParamLgl$new(id = "evenCuts", default = FALSE, tags = "train"),
-          ParamInt$new(id = "numThreads", default = 1L, lower = 1L, tags = "train"),
+          ParamInt$new(id = "numThreads", default = 1L, lower = 1L,
+            tags = "train"),
           ParamUty$new(id = "subsetSizes", tags = "train"),
           ParamUty$new(id = "subsetGroups", tags = "train"),
           ParamUty$new(id = "tasks", tags = "train"),
-          ParamDbl$new(id = "probOfTaskCuts", lower = 0, upper = 1, tags = "train"),
-          ParamInt$new(id = "numRandomTaskCuts", default = 1L, lower = 1L, tags = "train"),
-          ParamFct$new(id = "na.action", default = "stop", levels = c("stop", "zero", "fuse"), tags = "train")
+          ParamDbl$new(id = "probOfTaskCuts", lower = 0, upper = 1,
+            tags = "train"),
+          ParamInt$new(id = "numRandomTaskCuts", default = 1L, lower = 1L,
+            tags = "train"),
+          ParamFct$new(id = "na.action", default = "stop",
+            levels = c("stop", "zero", "fuse"), tags = "train")
         )
       )
 
@@ -35,9 +44,11 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees", inherit = Learner
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass")
       )
-    },
+    }),
 
-    train_internal = function(task) {
+  private = list(
+
+    .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
       x = as.matrix(data[, task$feature_names, with = FALSE])
@@ -50,7 +61,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees", inherit = Learner
       invoke(extraTrees::extraTrees, x = x, y = y, .args = pars)
     },
 
-    predict_internal = function(task) {
+    .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {

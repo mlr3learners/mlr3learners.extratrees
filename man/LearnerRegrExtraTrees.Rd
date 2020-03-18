@@ -4,11 +4,9 @@
 \alias{LearnerRegrExtraTrees}
 \alias{mlr_learners_regr.extratrees}
 \title{Regression ExtraTrees Learner}
-\format{
-\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerRegr]{mlr3::LearnerRegr}.
-}
 \description{
-A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression extratree implemented in extraTree::extraTree()] in package \CRANpkg{extraTree}.
+A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression extratree implemented in
+extraTree::extraTree()] in package \CRANpkg{extraTree}.
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrExtraTrees}
@@ -17,8 +15,6 @@ A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression extratree implemen
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{LearnerRegrExtraTrees$new()}}
-\item \href{#method-train_internal}{\code{LearnerRegrExtraTrees$train_internal()}}
-\item \href{#method-predict_internal}{\code{LearnerRegrExtraTrees$predict_internal()}}
 \item \href{#method-clone}{\code{LearnerRegrExtraTrees$clone()}}
 }
 }
@@ -39,26 +35,9 @@ A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression extratree implemen
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
+Create a new \code{LearnerRegrExtraTrees} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrExtraTrees$new()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train_internal"></a>}}
-\if{latex}{\out{\hypertarget{method-train_internal}{}}}
-\subsection{Method \code{train_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrExtraTrees$train_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict_internal"></a>}}
-\if{latex}{\out{\hypertarget{method-predict_internal}{}}}
-\subsection{Method \code{predict_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrExtraTrees$predict_internal(task)}\if{html}{\out{</div>}}
 }
 
 }

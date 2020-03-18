@@ -4,11 +4,9 @@
 \alias{LearnerClassifExtraTrees}
 \alias{mlr_learners_classif.extratrees}
 \title{Classification ExtraTrees Learner}
-\format{
-\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.
-}
 \description{
-A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratree implemented in extraTree::extraTree()] in package \CRANpkg{extraTree}.
+A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratree implemented in
+extraTree::extraTree()] in package \CRANpkg{extraTree}.
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifExtraTrees}
@@ -17,8 +15,6 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{LearnerClassifExtraTrees$new()}}
-\item \href{#method-train_internal}{\code{LearnerClassifExtraTrees$train_internal()}}
-\item \href{#method-predict_internal}{\code{LearnerClassifExtraTrees$predict_internal()}}
 \item \href{#method-clone}{\code{LearnerClassifExtraTrees$clone()}}
 }
 }
@@ -39,26 +35,9 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification extratre
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
+Create a new \code{LearnerClassifExtraTrees} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$new()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train_internal"></a>}}
-\if{latex}{\out{\hypertarget{method-train_internal}{}}}
-\subsection{Method \code{train_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$train_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict_internal"></a>}}
-\if{latex}{\out{\hypertarget{method-predict_internal}{}}}
-\subsection{Method \code{predict_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifExtraTrees$predict_internal(task)}\if{html}{\out{</div>}}
 }
 
 }
