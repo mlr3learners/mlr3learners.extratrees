@@ -1,4 +1,4 @@
-# mlr3learners.extratrees 0.1.0.9000
+# mlr3learners.extratrees 0.2.0
 
 - Add param "quantile" for `LearnerRegrExtraTrees`
 - Use `$help()` method from super class
