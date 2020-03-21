@@ -16,7 +16,8 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
   inherit = LearnerClassif,
   public = list(
 
-    #' @description Create a new `LearnerClassifExtraTrees` object.
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(

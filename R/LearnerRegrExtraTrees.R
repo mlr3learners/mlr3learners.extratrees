@@ -15,7 +15,8 @@
 LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
   public = list(
 
-    #' @description Create a new `LearnerRegrExtraTrees` object.
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
