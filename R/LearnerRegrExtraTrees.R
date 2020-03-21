@@ -1,14 +1,18 @@
 #' @title Regression ExtraTrees Learner
 #'
-#' @name mlr_learners_regr.extraTrees
+#' @name mlr_learners_regr.extratrees
 #'
 #' @description
-#' A [mlr3::LearnerRegr] for a regression extratree implemented in
-#' extraTree::extraTree()] in package \CRANpkg{extraTree}.
+#' Regression extratree learner.
+#' Calls [extraTrees::extraTrees()] from package \CRANpkg{extraTree}.
+#'
+#' @templateVar id regr.extratrees
+#' @template section_dictionary_learner
 #'
 #' @export
+#' @template seealso_learner
+#' @template example
 LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
-
   public = list(
 
     #' @description Create a new `LearnerRegrExtraTrees` object.
@@ -45,7 +49,7 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
         predict_types = "response",
         param_set = ps,
         properties = "weights",
-        man = "mlr3learners.extratrees::mlr_learners_regr.extraTrees"
+        man = "mlr3learners.extratrees::mlr_learners_regr.extratrees"
       )
     }
   ),
