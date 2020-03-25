@@ -1,17 +1,23 @@
 #' @title Classification ExtraTrees Learner
 #'
-#' @name mlr_learners_classif.extraTrees
+#' @name mlr_learners_classif.extratrees
 #'
 #' @description
-#' A [mlr3::LearnerClassif] for a classification extratree implemented in
-#' extraTree::extraTree()] in package \CRANpkg{extraTree}.
+#' Classification extratree learner.
+#' Calls [extraTrees::extraTrees()] from package \CRANpkg{extraTree}.
+#'
+#' @templateVar id classif.extratrees
+#' @template section_dictionary_learner
 #'
 #' @export
+#' @template seealso_learner
+#' @template example
 LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
   inherit = LearnerClassif,
   public = list(
 
-    #' @description Create a new `LearnerClassifExtraTrees` object.
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
@@ -43,7 +49,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass"),
-        man = "mlr3learners.extratrees::mlr_learners_classif.extraTrees"
+        man = "mlr3learners.extratrees::mlr_learners_classif.extratrees"
       )
     }),
 

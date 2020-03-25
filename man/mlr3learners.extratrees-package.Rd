@@ -4,10 +4,9 @@
 \name{mlr3learners.extratrees-package}
 \alias{mlr3learners.extratrees}
 \alias{mlr3learners.extratrees-package}
-\title{mlr3learners.extratrees: extraTrees learner from extraTrees package for mlr3}
+\title{mlr3learners.extratrees: Learners from extraTrees package for mlr3}
 \description{
-extraTrees learner from extraTrees package for
-    'mlr3'.
+Adds `extraTrees()` from the extraTrees package to mlr3.
 }
 \seealso{
 Useful links:
@@ -18,5 +17,10 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de}
+
+Authors:
+\itemize{
+  \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+}
 
 }

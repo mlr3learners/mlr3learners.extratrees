@@ -6,7 +6,7 @@
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 <!-- badges: end -->
 
-Adds `extratrees()` from the `{extratrees}` package to `{mlr3}`.
+Adds `extraTrees()` from the {extraTrees} package to {mlr3}.
 
 Install the latest release of the package via
 
@@ -14,9 +14,9 @@ Install the latest release of the package via
 install.packages("mlr3learners.extratrees")
 ```
 
-by following the instructions in the [mlr3learners.drat](https://github.com/mlr3learners/mlr3learners.drat) README.
+by following the instructions in the [mlr3learners.drat README](https://github.com/mlr3learners/mlr3learners.drat).
 
-Alternatively, you can install the latest version of `mlr3learners.extratrees` from Github with:
+Alternatively, you can install the latest version of {mlr3learners.extratrees} from Github with:
 
 ```r
 remotes::install_github("mlr3learners/mlr3learners.extratrees")
