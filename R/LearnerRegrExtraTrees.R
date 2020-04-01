@@ -12,7 +12,8 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
+LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
+  inherit = LearnerRegr,
   public = list(
 
     #' @description
@@ -20,25 +21,32 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamInt$new(id = "ntree", default = 500L, lower = 1L,
+          ParamInt$new(
+            id = "ntree", default = 500L, lower = 1L,
             tags = "train"),
           ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-          ParamInt$new(id = "nodesize", default = 1L, lower = 1L,
+          ParamInt$new(
+            id = "nodesize", default = 1L, lower = 1L,
             tags = "train"),
           ParamInt$new(id = "numRandomCuts", default = 1L, tags = "train"),
           ParamLgl$new(id = "evenCuts", default = FALSE, tags = "train"),
-          ParamInt$new(id = "numThreads", default = 1L, lower = 1L,
+          ParamInt$new(
+            id = "numThreads", default = 1L, lower = 1L,
             tags = "train"),
-          ParamLgl$new(id = "quantile", default = FALSE,
+          ParamLgl$new(
+            id = "quantile", default = FALSE,
             tags = c("train", "predict")),
           ParamUty$new(id = "subsetSizes", tags = "train"),
           ParamUty$new(id = "subsetGroups", tags = "train"),
           ParamUty$new(id = "tasks", tags = "train"),
-          ParamDbl$new(id = "probOfTaskCuts", lower = 0, upper = 1,
+          ParamDbl$new(
+            id = "probOfTaskCuts", lower = 0, upper = 1,
             tags = "train"),
-          ParamInt$new(id = "numRandomTaskCuts", default = 1L, lower = 1L,
+          ParamInt$new(
+            id = "numRandomTaskCuts", default = 1L, lower = 1L,
             tags = "train"),
-          ParamFct$new(id = "na.action", default = "stop",
+          ParamFct$new(
+            id = "na.action", default = "stop",
             levels = c("stop", "zero", "fuse"), tags = "train")
         )
       )
@@ -56,7 +64,6 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees", inherit = LearnerRegr,
   ),
 
   private = list(
-
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
