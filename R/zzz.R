@@ -15,13 +15,13 @@ register_mlr3extratrees = function(libname, pkgname) {
   x$add("regr.extratrees", LearnerRegrExtraTrees)
 }
 
-.onLoad = function(libnameb, pkgname) {
+.onLoad = function(libnameb, pkgname) { # nolint
   register_mlr3extratrees()
   setHook(packageEvent("mlr3", "onLoad"), function(...) register_mlr3extratrees(),
     action = "append")
 }
 
-.onUnload = function(libpath) {
+.onUnload = function(libpath) { # nolint
   event = packageEvent("mlr3", "onLoad")
   hooks = getHook(event)
   pkgname = vapply(hooks, function(x) environment(x)$pkgname, NA_character_)
